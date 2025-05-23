@@ -6,7 +6,7 @@ If you are learning (you are a student, etc.) this is **not meant for you**!
 
 Install the `Dev Containers (ms-vscode-remote.remote-containers)` extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-## Installing locally on Windows
+## Installing from scratch locally on Windows
 
 ### 1 - dotnet
 
@@ -58,20 +58,39 @@ The following is from <https://docs.avaloniaui.net/docs/guides/platforms/how-to-
 dotnet workload install wasm-tools
 ```
 
+You won't need Administrator anymore to launch the web app:
+
 ```sh
 dotnet run --project ScoutTrainingApp.Browser
 ```
 
-### 4 - Re-opening locally
+## Opening project locally
 
 Do a:
 
 ```sh
 # On all PCs except macOS (confer with devcontainer.json's "dotnet restore" notes)
-dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop
+#   And if you have dotnet 9 installed replace [wasm-tools] with [wasm-tools-net8]
+dotnet workload install wasm-tools android
+dotnet restore ScoutTrainingApp.Android
+dotnet restore ScoutTrainingApp.Browser
+dotnet restore ScoutTrainingApp.Desktop
 
 # On macOS
+dotnet workload restore
 dotnet restore
+```
+
+Then on Linux only:
+
+```sh
+dotnet dev-certs https
+```
+
+Then you can launch the web app:
+
+```sh
+dotnet run --project ScoutTrainingApp.Browser
 ```
 
 ## Developing for iOS

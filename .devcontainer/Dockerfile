@@ -14,3 +14,7 @@ FROM mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm
 #       'wasm-tool' if we had dotnet version 8.0 as the dotnet executable)
 #   android: ScoutTrainingApp.Android
 RUN sudo dotnet workload install wasm-tools-net8 android
+
+#   https://github.com/dotnet/emsdk used by wasm-tools has an
+#   implicit system dependency on Python
+RUN sudo apt-get update && sudo apt-get install -y python3

@@ -6,12 +6,20 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5001],
-	// "portsAttributes": {
-	//		"5001": {
-	//			"protocol": "https"
-	//		}
-	// }
+	"forwardPorts": [
+		5235
+	],
+	"portsAttributes": {
+		"5235": {
+			"label": "HTTP ScoutTrainingApp",
+			"onAutoForward": "openPreview",
+			"protocol": "http"
+		},
+		"7169": {
+			"label": "HTTPS ScoutTrainingApp",
+			"protocol": "https"
+		}
+	},
 	//
 	// --------------------------- dotnet restore ---------------------------
 	//
@@ -26,7 +34,7 @@
 	// So we skip ScoutTrainingApp.iOS and _manually_ restore only the projects we need.
 	// That also includes setting 'dotnet.projects.enableAutomaticRestore' to false
 	// in settings.json so the C# extension does not try to restore itself.
-	"postCreateCommand": "dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop",
+	"postCreateCommand": "dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop && dotnet dev-certs https && dotnet watch --project ScoutTrainingApp.Browser --interactive",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
