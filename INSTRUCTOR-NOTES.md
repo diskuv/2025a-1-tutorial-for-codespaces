@@ -73,3 +73,9 @@ dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Brows
 # On macOS
 dotnet restore
 ```
+
+## Developing for iOS
+
+The C# extension only scans ScoutTrainingApp.sln which now does not have iOS (and now doesn't have the very annoying error "Failed to restore NuGet packages for the solution." caused by iOS not being installable on non-macOS hardware).
+
+When and if we use iOS for training, the ScoutTrainingApp.sln should be deleted and VS Code restarted.
