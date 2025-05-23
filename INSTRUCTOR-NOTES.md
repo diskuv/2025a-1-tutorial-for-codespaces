@@ -1,0 +1,59 @@
+# Notes for the trainer
+
+If you are learning (you are a student, etc.) this is **not meant for you**!
+
+## Installing locally on Windows
+
+### 1 - dotnet
+
+Download and install **.NET 8.0 LTS** from <https://dotnet.microsoft.com/en-us/download>.
+
+As of 2025-May the [support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core) is:
+
+| Version | Original release date | Latest patch version | Patch release date | Release type | Support phase | End of support    |
+| ------- | --------------------- | -------------------- | ------------------ | ------------ | ------------- | ----------------- |
+| .NET 9  | November 12, 2024     | 9.0.5                | May 13, 2025       | STS          | Active        | May 12, 2026      |
+| .NET 8  | November 14, 2023     | 8.0.16               | May 13, 2025       | LTS          | Active        | November 10, 2026 |
+
+Verify with:
+
+```sh
+$ dotnet --version
+8.0.313
+```
+
+### 2 - Avalonia
+
+This is from <https://docs.avaloniaui.net/docs/get-started/install> ...
+
+We will install **Avalonia Cross Platform Application**.
+
+```sh
+# This might complain that there is no project. That is fine.
+dotnet new install Avalonia.Templates
+
+# This creates ./ScoutTrainingApp.sln, ./ScoutTrainingApp.Browser/wwwroot/index.html, etc.
+dotnet new avalonia.xplat --name ScoutTrainingApp --framework net8.0 --mvvm CommunityToolkit --output .
+```
+
+Make sure you can run the desktop with:
+
+```sh
+dotnet run --project ScoutTrainingApp.Desktop
+```
+
+### 3 - WASM Tools - Administrator Required
+
+The WASM tools are for displaying the app in a web browser. Since this tutorial is web-based with GitHub Codespaces, we need the web browser.
+
+But for running on a local PC, this step is not optional ... you can just run the ScoutTrainingApp.Desktop from the last step.
+
+The following is from <https://docs.avaloniaui.net/docs/guides/platforms/how-to-use-web-assembly>:
+
+```sh
+dotnet workload install wasm-tools
+```
+
+```sh
+dotnet run --project ScoutTrainingApp.Browser
+```
