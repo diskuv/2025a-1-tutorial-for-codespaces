@@ -3,5 +3,7 @@
     "telemetry.feedback.enabled": false,
 
     // Confer with devcontainer.json's "dotnet restore" notes
-    "dotnet.projects.enableAutomaticRestore": false
+    "dotnet.projects.enableAutomaticRestore": false,
+    "chat.agent.enabled": false,
+    "chat.extensionTools.enabled": false
 }
