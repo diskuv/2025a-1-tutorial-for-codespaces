@@ -10,6 +10,8 @@ Before the class or YouTube video starts, click the following since it will take
 
 You are ready when you see a webpage in the online editor that says **Welcome to Scout Training**:
 
+![Welcome to Scout Training](docs/welcome-to-scout-training.png)
+
 ---
 
 If you like this content, please add a star to [this tutorial's GitHub repository](https://github.com/diskuv/2025a-1-tutorial-for-codespaces) and the related [dkcoder GitHub repository](https://github.com/diskuv/dkcoder).
