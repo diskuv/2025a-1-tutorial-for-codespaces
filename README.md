@@ -8,9 +8,9 @@ This tutorial uses remote workstations provided by **GitHub Codespaces**. There 
 Before the class or YouTube video starts, click the following since it will take **10 minutes** for your workstation to be ready:
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/diskuv/2025a-1-tutorial-for-codespaces?quickstart=1)
 
-You are ready when you see a webpage in the online editor that says **Welcome to Scout Training**:
+You are ready when you see a webpage in your remote workspace editor that says **Welcome to Scout Training**:
 
-![Welcome to Scout Training](docs/welcome-to-scout-training.png)
+![Welcome to Scout Training](content/welcome-to-scout-training.png)
 
 ---
 
