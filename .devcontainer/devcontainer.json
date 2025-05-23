@@ -1,0 +1,50 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+	"name": "ScoutTrainingApp with WASM .NET for web learning",
+	"dockerFile": "Dockerfile",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [5000, 5001],
+	// "portsAttributes": {
+	//		"5001": {
+	//			"protocol": "https"
+	//		}
+	// }
+	//
+	// --------------------------- dotnet restore ---------------------------
+	//
+	// The iOS workload (ex. Microsoft.iOS.Sdk.net8.0_18.0) will not be available
+	// on Linux:
+	// $ sudo dotnet workload install ios
+	// > Workload installation failed: Workload ID ios isn't supported on this platform.
+	//
+	// and the C# vscode extension will say
+	// "Failed to restore NuGet packages for the solution." because of that.
+	//
+	// So we skip ScoutTrainingApp.iOS and _manually_ restore only the projects we need.
+	// That also includes setting 'dotnet.projects.enableAutomaticRestore' to false
+	// in settings.json so the C# extension does not try to restore itself.
+	"postCreateCommand": "dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// C# Dev Kit
+				"ms-dotnettools.csdevkit"
+			]
+		},
+		"codespaces": {
+			"openFiles": [
+				"README.md"
+			]
+		}
+	},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	"containerEnv": {
+		// Don't send telemetry from 'dotnet ...'
+		"DOTNET_CLI_TELEMETRY_OPTOUT": "1"
+	}
+}

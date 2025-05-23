@@ -2,6 +2,10 @@
 
 If you are learning (you are a student, etc.) this is **not meant for you**!
 
+## Developing with Dev Containers
+
+Install the `Dev Containers (ms-vscode-remote.remote-containers)` extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
 ## Installing locally on Windows
 
 ### 1 - dotnet
@@ -56,4 +60,16 @@ dotnet workload install wasm-tools
 
 ```sh
 dotnet run --project ScoutTrainingApp.Browser
+```
+
+### 4 - Re-opening locally
+
+Do a:
+
+```sh
+# On all PCs except macOS (confer with devcontainer.json's "dotnet restore" notes)
+dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop
+
+# On macOS
+dotnet restore
 ```

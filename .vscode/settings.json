@@ -1,0 +1,7 @@
+{
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    "telemetry.feedback.enabled": false,
+
+    // Confer with devcontainer.json's "dotnet restore" notes
+    "dotnet.projects.enableAutomaticRestore": false
+}

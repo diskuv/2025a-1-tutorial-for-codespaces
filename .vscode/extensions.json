@@ -1,5 +1,9 @@
 {
     "recommendations": [
         "ms-dotnettools.csdevkit"
+    ],
+    "unwantedRecommendations": [
+        // We don't want this appearing in the devcontainer and/or GitHub Codespaces
+        "ms-azuretools.vscode-docker"
     ]
 }
