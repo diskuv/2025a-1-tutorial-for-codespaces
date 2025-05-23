@@ -5,5 +5,10 @@
     // Confer with devcontainer.json's "dotnet restore" notes
     "dotnet.projects.enableAutomaticRestore": false,
     "chat.agent.enabled": false,
-    "chat.extensionTools.enabled": false
+    "chat.extensionTools.enabled": false,
+    "chat.mcp.enabled": false,
+    "chat.promptFiles": false,
+    "chat.sendElementsToChat.enabled": false,
+    "chat.sendElementsToChat.attachImages": false,
+    "chat.sendElementsToChat.attachCSS": false
 }
