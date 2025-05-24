@@ -1,7 +1,8 @@
 {
     "recommendations": [
         "ms-dotnettools.csdevkit",
-        "avaloniateam.vscode-avalonia"
+        "avaloniateam.vscode-avalonia",
+        "dabbinavo.xamlstyler"
     ],
     "unwantedRecommendations": [
         // We don't want this appearing in the devcontainer and/or GitHub Codespaces

@@ -42,7 +42,9 @@
 				// C# Dev Kit
 				"ms-dotnettools.csdevkit",
 				// Avalonia for VSCode
-				"avaloniateam.vscode-avalonia"
+				"avaloniateam.vscode-avalonia",
+				// XAML Styler
+				"dabbinavo.xamlstyler"
 			]
 		},
 		"codespaces": {
