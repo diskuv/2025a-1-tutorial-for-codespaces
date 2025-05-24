@@ -34,3 +34,8 @@ RUN sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
 #     libfontconfig.so.1: cannot open shared object file: No such file or directory
 #     /usr/share/dotnet/shared/Microsoft.NETCore.App/8.0.16/libSkiaSharp.so: cannot open shared object file: No such file or directory
 RUN sudo apt-get install -y libfontconfig1
+
+#   https://github.com/Xpra-org/xpra/wiki/Download#-for-debian-based-distributions
+RUN sudo wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc
+RUN sudo sh -c 'cd /etc/apt/sources.list.d && wget https://raw.githubusercontent.com/Xpra-org/xpra/master/packaging/repos/bookworm/xpra-lts.sources'
+RUN sudo apt update && sudo apt install -y xpra
