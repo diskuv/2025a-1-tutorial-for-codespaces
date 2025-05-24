@@ -26,6 +26,8 @@ $ dotnet --version
 8.0.313
 ```
 
+After the project has been setup you can switch to dotnet 9. But we want the code to be dotnet 8 since it will be supported longer.
+
 ### 2 - Avalonia
 
 This is from <https://docs.avaloniaui.net/docs/get-started/install> ...
@@ -66,12 +68,14 @@ dotnet run --project ScoutTrainingApp.Browser
 
 ## Opening project locally
 
+Download and install **.NET 9.0 STS** from <https://dotnet.microsoft.com/en-us/download>.
+
 Do a:
 
 ```sh
 # On all PCs except macOS (confer with devcontainer.json's "dotnet restore" notes)
-#   And if you have dotnet 9 installed replace [wasm-tools] with [wasm-tools-net8]
-dotnet workload install wasm-tools android
+#   And if you have dotnet 8 installed replace [wasm-tools-net8] with [wasm-tools]
+dotnet workload install wasm-tools-net8 android
 dotnet restore ScoutTrainingApp.Android
 dotnet restore ScoutTrainingApp.Browser
 dotnet restore ScoutTrainingApp.Desktop

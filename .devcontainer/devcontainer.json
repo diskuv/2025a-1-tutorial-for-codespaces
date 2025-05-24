@@ -40,7 +40,9 @@
 		"vscode": {
 			"extensions": [
 				// C# Dev Kit
-				"ms-dotnettools.csdevkit"
+				"ms-dotnettools.csdevkit",
+				// Avalonia for VSCode
+				"avaloniateam.vscode-avalonia"
 			]
 		},
 		"codespaces": {
