@@ -18,3 +18,19 @@ RUN sudo dotnet workload install wasm-tools-net8 android
 #   https://github.com/dotnet/emsdk used by wasm-tools has an
 #   implicit system dependency on Python
 RUN sudo apt-get update && sudo apt-get install -y python3
+
+#   Install dotnet 8 since Avalonia Preview needs 8 (likely because
+#   the csproj is 8). Both dotnet 8 and 9 can co-exist.
+#   Reference: https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian?tabs=dotnet8
+RUN wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+    sudo dpkg -i packages-microsoft-prod.deb && \
+    rm packages-microsoft-prod.deb
+RUN sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
+
+#   The Avalonia Preview binds to localhost and can't be done correctly in a remote PC like GitHub Codespaces.
+#   But if running the devcontainer locally, we'd first encounter the following ... which we need to avoid:
+#     2025-05-24 03:45:08.379 [info] System.TypeInitializationException: The type initializer for 'SkiaSharp.SKImageInfo' threw an exception.
+#     ---> System.DllNotFoundException: Unable to load shared library 'libSkiaSharp' or one of its dependencies. In order to help diagnose loading problems, consider using a tool like strace. If you're using glibc, consider setting the LD_DEBUG environment variable: 
+#     libfontconfig.so.1: cannot open shared object file: No such file or directory
+#     /usr/share/dotnet/shared/Microsoft.NETCore.App/8.0.16/libSkiaSharp.so: cannot open shared object file: No such file or directory
+RUN sudo apt-get install -y libfontconfig1
