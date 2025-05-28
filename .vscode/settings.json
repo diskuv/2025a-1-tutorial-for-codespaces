@@ -18,5 +18,6 @@
         "template": "${firstWorkspaceFolder}/dk -l ERROR Run Ml.Exec --merlin -- $prog $args"
     },
     "markdown.preview.openMarkdownLinks": "inPreview",
-    "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true
+    "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
+    "markdown-preview-enhanced.enableScriptExecution": true
 }

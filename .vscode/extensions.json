@@ -2,7 +2,8 @@
     "recommendations": [
         "ms-dotnettools.csdevkit",
         "avaloniateam.vscode-avalonia",
-        "dabbinavo.xamlstyler"
+        "dabbinavo.xamlstyler",
+        "shd101wyy.markdown-preview-enhanced"
     ],
     "unwantedRecommendations": [
         // We don't want this appearing in the devcontainer and/or GitHub Codespaces

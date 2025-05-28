@@ -39,12 +39,10 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				// C# Dev Kit
 				"ms-dotnettools.csdevkit",
-				// Avalonia for VSCode
 				"avaloniateam.vscode-avalonia",
-				// XAML Styler
-				"dabbinavo.xamlstyler"
+				"dabbinavo.xamlstyler",
+				"shd101wyy.markdown-preview-enhanced"
 			]
 		},
 		"codespaces": {
