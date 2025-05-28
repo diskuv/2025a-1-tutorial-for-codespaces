@@ -102,3 +102,9 @@ dotnet run --project ScoutTrainingApp.Browser
 The C# extension only scans ScoutTrainingApp.sln which now does not have iOS (and now doesn't have the very annoying error "Failed to restore NuGet packages for the solution." caused by iOS not being installable on non-macOS hardware).
 
 When and if we use iOS for training, the ScoutTrainingApp.sln should be deleted and VS Code restarted.
+
+## To Organize
+
+```sh
+xpra start --start='dotnet run --project ScoutTrainingApp.Desktop' --html=on --printing=no --attach=yes --xvfb='Xvfb +extension GLX +extension Composite -screen 0 1024x768x24+32 -nolisten tcp -noreset -auth $XAUTHORITY -dpi 96x96' --resize-display=no --dbus-proxy=no --dbus-control=no --pulseaudio=no --speaker=off --notifications=no --system-tray=no --audio=no --webcam=no --terminate-children=yes --mmap=no --bind-tcp=127.0.0.1:10000 --daemon=yes
+```
