@@ -45,3 +45,7 @@ RUN sudo wget -O jj.tar.gz https://github.com/jj-vcs/jj/releases/download/v0.29.
     tar xCfz /usr/local/bin jj.tar.gz ./jj && \
     rm jj.tar.gz && \
     command -v jj
+
+#   https://github.com/diskuv/dkcoder
+RUN sudo wget -O /usr/local/bin/dk https://diskuv.com/a/dk-distribution/2.3.202505280211/dist/dk-linux_x86_64 && \
+    sudo chmod +x /usr/local/bin/dk
