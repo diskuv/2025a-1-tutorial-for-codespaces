@@ -39,3 +39,9 @@ RUN sudo apt-get install -y libfontconfig1
 RUN sudo wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc
 RUN sudo sh -c 'cd /etc/apt/sources.list.d && wget https://raw.githubusercontent.com/Xpra-org/xpra/master/packaging/repos/bookworm/xpra-lts.sources'
 RUN sudo apt update && sudo apt install -y xpra
+
+#   https://jj-vcs.github.io/jj/latest/install-and-setup/
+RUN sudo wget -O jj.tar.gz https://github.com/jj-vcs/jj/releases/download/v0.29.0/jj-v0.29.0-x86_64-unknown-linux-musl.tar.gz && \
+    tar xCfz /usr/local/bin jj.tar.gz ./jj && \
+    rm jj.tar.gz && \
+    command -v jj

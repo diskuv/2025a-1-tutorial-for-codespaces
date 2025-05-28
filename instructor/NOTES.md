@@ -2,6 +2,20 @@
 
 If you are learning (you are a student, etc.) this is **not meant for you**!
 
+## Markdown Documentation
+
+With:
+
+* The Markdown Preview Enhanced plugin
+* The vscode setting `"markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true` to make any `.md` Markdown document have a preview opened automatically.
+* The devcontainer setting `"openFiles": ["content/TUTORIAL.md"]` to open the tutorial when GitHub Codespaces starts
+
+we can use:
+
+* The `<-- slide -->` element and frontmatter to create presentation slides:
+<https://shd101wyy.github.io/markdown-preview-enhanced/#/presentation?id=presentation-front-matter>
+* The code chunks to create executable blocks: <https://shd101wyy.github.io/markdown-preview-enhanced/#/code-chunk>
+
 ## Developing with Dev Containers
 
 Install the `Dev Containers (ms-vscode-remote.remote-containers)` extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
@@ -64,6 +78,14 @@ You won't need Administrator anymore to launch the web app:
 
 ```sh
 dotnet run --project ScoutTrainingApp.Browser
+```
+
+### 4 - Jujutsu
+
+Run:
+
+```powershell
+winget install --id=jj-vcs.jj -e
 ```
 
 ## Opening project locally
