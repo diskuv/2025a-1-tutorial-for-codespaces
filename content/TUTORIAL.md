@@ -19,3 +19,10 @@ to
 ```csharp
 private string _greeting = "Welcome to Scout Training YOUR NAME!";
 ```
+
+## STEP 3
+
+```sh {cmd="cmd" args=["/C", "$input_file"]}
+cd ..
+.\dk.cmd Send.Me
+```
