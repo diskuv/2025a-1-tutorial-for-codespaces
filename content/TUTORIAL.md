@@ -41,9 +41,8 @@ private string _greeting = "Welcome to Scout Training, YOUR FIRST NAME!";
 
 ## Send changes to the instructor
 
-```sh {cmd="cmd" args=["/C", "$input_file"]}
-ECHO %PATH%
-echo ..\dk.cmd Send.Me
+```ocaml {cmd="dk" args=["--project-dir", "..", "-s", "$input_file", "Run"]}
+let __init () = SendStd_Std.Me.__init ()
 ```
 
 **Verify:**

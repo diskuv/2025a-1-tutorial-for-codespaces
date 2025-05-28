@@ -88,6 +88,35 @@ Run:
 winget install --id=jj-vcs.jj -e
 ```
 
+### 5 - dk
+
+Run in PowerShell:
+
+```powershell
+mkdir C:\dktutorials
+iwr https://diskuv.com/a/dk-distribution/2.3.202505280211/dist/dk-windows_x86_64.exe -OutFile C:\dktutorials\dk.exe
+```
+
+Then either:
+
+1. Add the `dk` executable permanently to your environment:
+
+   ```powershell
+    $userpath = [System.Environment]::GetEnvironmentVariable("PATH", "USER")
+    if (-not ($userpath -like "*\dktutorials")) {
+    [Environment]::SetEnvironmentVariable("PATH", $userpath + ";C:\dktutorials", "USER")
+    }
+   ```
+
+   Then restart VS Code.
+2. **OR**, if you have cmake installed, rerun VS Code with:
+
+   ```powershell
+   cmake -E env --modify PATH=path_list_prepend:C:\dktutorials -- code
+   ```
+
+   each time you need the tutorial.
+
 ## Opening project locally
 
 Download and install **.NET 9.0 STS** from <https://dotnet.microsoft.com/en-us/download>.
