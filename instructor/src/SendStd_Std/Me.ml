@@ -90,11 +90,12 @@ let send ~host () =
         StdExit.exit 3
   in
   let sourcefiles' =
-    List.filter
-      (fun i ->
-        Logs.debug (fun l -> l "+ %a" Fpath.pp i);
-        Bos.OS.File.exists i = Ok true)
-      sourcefiles
+    Fpath.(v projectdir / "content" / "TUTORIAL.md")
+    :: List.filter
+         (fun i ->
+           Logs.debug (fun l -> l "+ %a" Fpath.pp i);
+           Bos.OS.File.exists i = Ok true)
+         sourcefiles
   in
   (* Bundle and send workspace *)
   let cmd =
