@@ -14,6 +14,10 @@ You are ready when you see a webpage in your remote workspace editor that says *
 
 ---
 
+Are you currently in a training session? You need to start in the first [content/TUTORIAL.md](content/TUTORIAL.md).
+
+---
+
 If you like this content, please add a star to [this tutorial's GitHub repository](https://github.com/diskuv/2025a-1-tutorial-for-codespaces) and the related [dkcoder GitHub repository](https://github.com/diskuv/dkcoder).
 
 Add a [feature request here](https://github.com/diskuv/2025a-1-tutorial-for-codespaces/issues) if you'd like to ask for a second tutorial for the same content on a local PC.

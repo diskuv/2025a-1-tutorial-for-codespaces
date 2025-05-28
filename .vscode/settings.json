@@ -11,5 +11,12 @@
     "chat.sendElementsToChat.enabled": false,
     "chat.sendElementsToChat.attachImages": false,
     "chat.sendElementsToChat.attachCSS": false,
-    "livePreview.defaultPreviewPath": "ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot/index.html"
+    "livePreview.defaultPreviewPath": "ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot/index.html",
+    "ocaml.sandbox": {
+        "kind": "custom",
+        //"template": "${firstWorkspaceFolder}/dk -l ERROR --fixed-length-modules false Run -- Ml.Exec --merlin -- $prog $args"
+        "template": "${firstWorkspaceFolder}/dk -l ERROR Run Ml.Exec --merlin -- $prog $args"
+    },
+    "markdown.preview.openMarkdownLinks": "inPreview",
+    "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true
 }
