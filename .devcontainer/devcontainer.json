@@ -42,7 +42,8 @@
 				"ms-dotnettools.csdevkit",
 				"avaloniateam.vscode-avalonia",
 				"dabbinavo.xamlstyler",
-				"shd101wyy.markdown-preview-enhanced"
+				"shd101wyy.markdown-preview-enhanced",
+				"ms-vscode.live-server"
 			]
 		},
 		"codespaces": {

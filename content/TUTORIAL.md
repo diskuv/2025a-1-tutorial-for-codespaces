@@ -2,21 +2,32 @@
 presentation:
   width: 800
   height: 600
+  slideNumber: true
 ---
 
 <!-- slide -->
 
 # Tutorial
 
-## STEP 1
+## Are you in the right place?
 
 **Verify:**
 
-- [ ] that you are inside GitHub Codespaces. Your web browser (the `ScoutTrainingApp.Browser` tab on the right hand side) should be on a page with `https://xxx-xxx-xxxx.github.dev/` in the address bar. If not, start over from the [README.md document](../README.md).
+- [ ] that you are inside GitHub Codespaces. Your web browser should be on a page with `https://xxx-xxx-xxxx.github.dev/` in the address bar. If not, start over from the [README.md document](../README.md).
 
 <!-- slide -->
 
-## STEP 2
+## Show the empty app
+
+Ctrl-Shift-P, then `Live Preview: Start Server`
+
+**Verify:**
+
+- [ ] a `ScoutTrainingApp.Browser` tab appears on the right hand side
+
+<!-- slide -->
+
+## Start the app build
 
 First, press Ctrl-Shift-B and you should see a `Build.Me` Task running in the bottom right.
 
@@ -38,7 +49,7 @@ private string _greeting = "Welcome to Scout Training, YOUR FIRST NAME!";
 
 <!-- slide -->
 
-## STEP 3
+## Send changes to the instructor
 
 ```sh {cmd="cmd" args=["/C", "$input_file"]}
 ..\dk.cmd Send.Me
