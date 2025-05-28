@@ -10,5 +10,6 @@
     "chat.promptFiles": false,
     "chat.sendElementsToChat.enabled": false,
     "chat.sendElementsToChat.attachImages": false,
-    "chat.sendElementsToChat.attachCSS": false
+    "chat.sendElementsToChat.attachCSS": false,
+    "livePreview.defaultPreviewPath": "ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot/index.html"
 }
