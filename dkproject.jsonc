@@ -1,0 +1,8 @@
+{
+    "$comment": "Documentation is available at https://gitlab.com/diskuv/dksdk-access/-/blob/main/README.md",
+    "sources": {
+        "you": [
+            "instructor/src"
+        ]
+    }
+}
