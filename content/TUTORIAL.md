@@ -9,6 +9,10 @@ presentation:
 
 Press Ctrl-Shift-P, then `Markdown: Markdown Preview Enhanced: Open Preview to the Side`.
 
+Press Ctrl-Shift-P, then `Preferences: Color Theme`. It is currently `GitHub Dark`. You might want `GitHub Light` or `GitHub Light (colorblind)` instead.
+
+> ℹ️ You must refresh your web browser to see the color theme changes.
+
 **Verify:**
 
 - [ ] that you are inside GitHub Codespaces. Your web browser should be on a page with `https://xxx-xxx-xxxx.github.dev/` in the address bar. If not, start over from the [README.md document](../README.md).
