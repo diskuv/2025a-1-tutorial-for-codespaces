@@ -53,7 +53,9 @@
 					"**/.z-dk-dune-project": true,
 					"**/#s": true,
 					"**/dune-workspace": true
-				}
+				},
+				"workbench.colorTheme": "GitHub Dark",
+				"window.autoDetectColorScheme": false				
 			}
 		},
 		"codespaces": {
