@@ -241,7 +241,7 @@ Unhandled exception. System.Exception: Origin doesn't match Url
 So we need to have the `--html-url` bind to the correct IP address and port (ex. 127.0.0.1:8000) and the HostApp.dll needs to see the `Host: ...` header from the web browser as `127.0.0.1:8000` -or- the page is a vscode webview (confer: <https://github.com/AvaloniaUI/Avalonia/blob/513d1d96ecdcb121b160b81d412e4ea785c3daae/src/Avalonia.DesignerSupport/Remote/HtmlTransport/HtmlTransport.cs#L137C79-L137C93>).
 
 ```sh
-dotnet build ScoutTrainingApp.Desktop --configuration Debug
+dotnet build ScoutTrainingApp.Desktop
 
 dotnet exec --runtimeconfig ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.runtimeconfig.json \
    --depsfile ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.deps.json \

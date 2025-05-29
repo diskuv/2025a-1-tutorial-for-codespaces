@@ -34,7 +34,10 @@
 	// So we skip ScoutTrainingApp.iOS and _manually_ restore only the projects we need.
 	// That also includes setting 'dotnet.projects.enableAutomaticRestore' to false
 	// in settings.json so the C# extension does not try to restore itself.
-	"postCreateCommand": "dotnet restore ScoutTrainingApp.Android && dotnet restore ScoutTrainingApp.Browser && dotnet restore ScoutTrainingApp.Desktop && dotnet dev-certs https",
+	//
+	// BUT: Since we are using local Avalonia builds we can't do `dotnet restore`.
+	// So `dotnet build` instead.
+	"postCreateCommand": "dotnet dev-certs https && dotnet build ScoutTrainingApp.Desktop && dotnet build ScoutTrainingApp.Android && dotnet build ScoutTrainingApp.Browser",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {

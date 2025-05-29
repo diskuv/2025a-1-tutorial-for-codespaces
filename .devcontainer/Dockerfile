@@ -55,14 +55,38 @@ RUN sudo wget -O /usr/local/bin/dk https://diskuv.com/a/dk-distribution/2.3.2025
 #     rm caddy.tar.gz && \
 #     command -v caddy
 
+#   --------------
+#   BUILD AVALONIA
+#   --------------
+
+#   The version number should be the Avalonia Major.Minor.Patch version, followed by a .Serial number
+#   which is the sequence number of changes to this Dockerfile. Always increment the .Serial number when
+#   changing the Dockerfile!
+#
+#   format: Do not change format! Must be `#:: VERSION=<version>` since part of `grep -E` in ci/gitlab/util-*.yml
+#:: VERSION=11.3.0.1
+
+#   Root-level prerequisites for building Avalonia ...
+RUN sudo apt-get install -y npm
+
+#   We must build with the Dev Container login user. That is uid 1000
+#   which is the `vscode` user in this image. Confer:
+#   https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user). For this image it is the vscode user.
+#   Why? That way the `nuke --target BuildToNuGetCache` command populates the cache
+#   that is available to the Dev Container user.
+USER 1000
+
+#   User-level prerequisites for building Avalonia ...
+#
+#   'nuke'
+RUN dotnet tool install --global Nuke.GlobalTool --version 6.2.1
+ENV PATH="${PATH}:/home/vscode/.dotnet/tools"
+
 #   Patch for letting web browsers into GitHub Codespaces
 #   https://github.com/AvaloniaUI/Avalonia/blob/master/Documentation/build.md
-RUN dotnet tool install --global Nuke.GlobalTool --version 6.2.1
-#   Make 'nuke' available to RUN
-ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN git clone https://github.com/jonahbeckford/Avalonia.git /usr/src/Avalonia && \
-    OLDPWD=$(pwd) && cd /usr/src/Avalonia && \
-    git submodule update --init --recursive && \
-    sudo apt-get install -y npm && \
+RUN git clone https://github.com/jonahbeckford/Avalonia.git /home/vscode/Avalonia && \
+    git -C /home/vscode/Avalonia reset --hard 71618b9150bf582fd98975d39f6125c3d5417f45 && \
+    git -C /home/vscode/Avalonia submodule update --init --recursive && \
+    OLDPWD=$(pwd) && cd /home/vscode/Avalonia && \
     nuke --target BuildToNuGetCache --configuration Debug && \
     cd $OLDPWD
