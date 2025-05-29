@@ -20,28 +20,36 @@
 # This is critical for Windows and UNIX interoperability.
 * text=auto
 
-# Explicitly declare text files you want to always be normalized and converted
-# to native line endings on checkout.
-*.c text
-*.c++ text
-*.h text
-*.java text
-*.md text
-*.exe.manifest text
+# Jujutsu requires LF endings for all text files
+# https://jj-vcs.github.io/jj/latest/windows/#line-endings-are-not-converted
 
-# Declare files that will always have LF line endings on checkout.
+*.c text eol=lf
+*.c++ text eol=lf
+*.cs text eol=lf
+*.csproj text eol=lf
+*.h text eol=lf
+*.java text eol=lf
+*.md text eol=lf
+*.exe.manifest text eol=lf
+
 *.capnp text eol=lf
 configure text eol=lf
+*.css text eol=lf
 dk text eol=lf
 dune text eol=lf
 dune-project text eol=lf
 *.dune text eol=lf
 gradlew text eol=lf
-header-*.txt eol=lf
+header-*.txt text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
 *.patch text eol=lf
+*.plist text eol=lf
+*.props text eol=lf
 *.sexp text eol=lf
 *.sh text eol=lf
 Makefile text eol=lf
+*.manifest text eol=lf
 *.mli text eol=lf
 *.ml text eol=lf
 opam text eol=lf
@@ -51,22 +59,21 @@ opam text eol=lf
 *.pub text eol=lf
 *.sec text eol=lf
 *.sig text eol=lf
+*.sln text eol=lf
 *.t text eol=lf
+*.txt text eol=lf
+*.xib text eol=lf
+*.xml text eol=lf
 
-# Declare files that will always have CRLF line endings on checkout.
-#   Confer: https://stackoverflow.com/questions/232651/why-the-system-cannot-find-the-batch-label-specified-is-thrown-even-if-label-e
-*.bat text eol=crlf
-*.cmd text eol=crlf
-*.sln text eol=crlf
+*.bat text eol=lf
+*.cmd text eol=lf
+*.sln text eol=lf
 
-# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.1
-# > Creating PowerShell scripts on a Unix-like platform or using a cross-platform editor on Windows, such as Visual Studio Code,
-# >   results in a file encoded using UTF8NoBOM. These files work fine on PowerShell Core, but may break in Windows PowerShell if
-# >   the file contains non-Ascii characters.
-# > In general, Windows PowerShell uses the Unicode UTF-16LE encoding by default.
-# > Using any Unicode encoding, except UTF7, always creates a BOM.
-#
-# Hint: If a file is causing you problems (ex. `fatal: BOM is required in ... if encoded as UTF-16`) use
-#       "View > Change File Encoding > Save with Encoding > UTF-16LE" in Visual Studio Code to save the file correctly.
-*.ps1 text working-tree-encoding=UTF-16 eol=crlf
-*.psm1 text working-tree-encoding=UTF-16 eol=crlf
+*.ps1 text eol=lf
+*.psm1 text eol=lf
+
+COPYRIGHT text eol=lf
+LICENSE text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.ocamlformat text eol=lf

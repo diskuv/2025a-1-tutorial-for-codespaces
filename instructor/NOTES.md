@@ -80,12 +80,30 @@ You won't need Administrator anymore to launch the web app:
 dotnet run --project ScoutTrainingApp.Browser
 ```
 
-### 4 - Jujutsu
+### 4 - jj
 
-Run:
+If the git repository has not been setup for `jj`, do:
 
 ```powershell
+# winget publisher moved from martinvonz.jj to jj-vsc.jj.
+# confer: https://github.com/microsoft/winget-pkgs/tree/master/manifests/j/jj-vcs/jj/
 winget install --id=jj-vcs.jj -e
+
+git pull --ff-only
+git switch main
+
+# suggestions prompted during 'jj git init --colocate'
+jj git init --colocate
+jj bookmark track main@origin
+jj config set --user user.name "$(git config get user.name)"
+jj config set --user user.email "$(git config get user.email)"
+jj config set --user ui.editor "code.cmd -w"
+jj describe --reset-author --no-edit
+
+# https://jj-vcs.github.io/jj/latest/windows/#line-endings-are-not-converted
+# This will change all endings to LF not CRLF.
+git config core.autocrlf input
+jj abandon
 ```
 
 ### 5 - dk
