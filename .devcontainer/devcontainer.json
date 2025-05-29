@@ -47,6 +47,7 @@
 			],
 			"settings": {
 				"files.exclude": {
+					"**/.jj": true,
 					"**/_build": true,
 					"**/.merlin": true,
 					"**/.z-dk-dune-project": true,
