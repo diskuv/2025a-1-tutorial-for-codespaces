@@ -44,7 +44,16 @@
 				"dabbinavo.xamlstyler",
 				"shd101wyy.markdown-preview-enhanced",
 				"ms-vscode.live-server"
-			]
+			],
+			"settings": {
+				"files.exclude": {
+					"**/_build": true,
+					"**/.merlin": true,
+					"**/.z-dk-dune-project": true,
+					"**/#s": true,
+					"**/dune-workspace": true
+				}
+			}
 		},
 		"codespaces": {
 			"openFiles": [

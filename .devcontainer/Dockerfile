@@ -49,3 +49,20 @@ RUN sudo wget -O jj.tar.gz https://github.com/jj-vcs/jj/releases/download/v0.29.
 #   https://github.com/diskuv/dkcoder
 RUN sudo wget -O /usr/local/bin/dk https://diskuv.com/a/dk-distribution/2.3.202505280211/dist/dk-linux_x86_64 && \
     sudo chmod +x /usr/local/bin/dk
+
+# RUN sudo wget -O caddy.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.10.0/caddy_2.10.0_linux_amd64.tar.gz && \
+#     tar xCfz /usr/local/bin caddy.tar.gz caddy && \
+#     rm caddy.tar.gz && \
+#     command -v caddy
+
+#   Patch for letting web browsers into GitHub Codespaces
+#   https://github.com/AvaloniaUI/Avalonia/blob/master/Documentation/build.md
+RUN dotnet tool install --global Nuke.GlobalTool --version 6.2.1
+#   Make 'nuke' available to RUN
+ENV PATH="${PATH}:/root/.dotnet/tools"
+RUN git clone https://github.com/jonahbeckford/Avalonia.git /usr/src/Avalonia && \
+    OLDPWD=$(pwd) && cd /usr/src/Avalonia && \
+    git submodule update --init --recursive && \
+    sudo apt-get install -y npm && \
+    nuke --target BuildToNuGetCache --configuration Debug && \
+    cd $OLDPWD
