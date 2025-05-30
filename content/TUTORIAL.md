@@ -19,7 +19,7 @@ Press Ctrl-Shift-P, then `Preferences: Color Theme`. It is currently `GitHub Dar
 
 ## Start the app build
 
-Press Ctrl-Shift-B and you should see a `Build.Me` Task running in the bottom right. It will take 5 minutes the first time for it to say repeatedly:
+Press Ctrl-Shift-B and you should see a `Build.Me` Task running in the bottom right. It will take 5 minutes the first time for it to say **repeatedly**:
 
 ```text
 Build succeeded in 3.6s
@@ -31,6 +31,16 @@ Build succeeded in 3.6s
 **Verify:**
 
 - [ ] you can see the `Build succeeded`
+
+## Run the app (only local PC users)
+
+> ℹ️ This is only if you are running VS Code **directly** on a desktop computer or a laptop. If you are running in GitHub Codespaces, you are running a remote computer and you should skip this step.
+
+Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Run.Me`.
+
+**Verify:**
+
+- [ ] a new window appeared with `Welcome to Scout Training!` in the middle
 
 ## Show the minimal app
 

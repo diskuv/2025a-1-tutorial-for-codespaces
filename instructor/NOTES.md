@@ -16,6 +16,14 @@ we can use:
 <https://shd101wyy.github.io/markdown-preview-enhanced/#/presentation?id=presentation-front-matter>
 * The code chunks to create executable blocks: <https://shd101wyy.github.io/markdown-preview-enhanced/#/code-chunk>
 
+## Outline
+
+1. Environment
+2. 1-page 2 fields. [Avalonia Sample: Basic MVVM Sample](https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/MVVM/BasicMvvmSample)
+3. 1-page Command. Many fields. [Avalonia Sample: Commands Example](https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/MVVM/CommandSample)
+4. 2-page Form Wizard. [Avalonia Sample: Basic ViewLocator Sample](https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/Routing/BasicViewLocatorSample)
+5. Complete app with state. [Avalonia Sample: Simple ToDo List](https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/CompleteApps/SimpleToDoList)
+
 ## Developing with Dev Containers
 
 Install the `Dev Containers (ms-vscode-remote.remote-containers)` extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
@@ -40,7 +48,10 @@ $ dotnet --version
 8.0.313
 ```
 
-After the project has been setup you can switch to dotnet 9. But we want the code to be dotnet 8 since it will be supported longer.
+We want the code to be dotnet 8 since it will be supported longer, so **after the project has been setup** you can also:
+
+1. Install dotnet 9 (they can live side-by-side).
+2. Upgrade dotnet 8 to `8.0.410` or later. It is required for the `nuke` tool. Download dotnet 8.0.410 from <https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.410-windows-x64-installer>
 
 ### 2 - Avalonia
 
@@ -139,19 +150,77 @@ Then either:
 
 Download and install **.NET 9.0 STS** from <https://dotnet.microsoft.com/en-us/download>.
 
+You will first need a local build of Avalonia which is temporary until <https://github.com/AvaloniaUI/Avalonia/pull/18950> is fixed:
+
+```sh
+# (Windows only) Install npm
+winget install -e --id OpenJS.NodeJS
+
+git clone https://github.com/jonahbeckford/Avalonia.git ../Avalonia
+git -C ../Avalonia reset --hard 71618b9150bf582fd98975d39f6125c3d5417f45
+git -C ../Avalonia submodule update --init --recursive
+OLDPWD=$(pwd) && cd ../Avalonia
+nuke --target BuildToNuGetCache --configuration Debug
+cd $OLDPWD
+```
+
+For Windows only, did you get the following?
+
+```text
+#   [ERR] Compile: C:\Program Files\dotnet\sdk\8.0.410\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets(38,5): error NETSDK1147: To build this project, the following workloads must be installed: tvos [Y:\source\Avalonia\src\iOS\Avalonia.iOS\Avalonia.iOS.csproj::TargetFramework=net8.0-tvos17.0]
+#   [ERR] Compile: C:\Program Files\dotnet\sdk\8.0.410\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets(38,5): error NETSDK1147: To install these workloads, run the following command: dotnet workload restore [Y:\source\Avalonia\src\iOS\Avalonia.iOS\Avalonia.iOS.csproj::TargetFramework=net8.0-tvos17.0]
+#   [ERR] Compile: C:\Program Files\dotnet\sdk\8.0.410\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets(38,5): error NETSDK1147: To build this project, the following workloads must be installed: tvos [Y:\source\Avalonia\src\iOS\Avalonia.iOS\Avalonia.iOS.csproj::TargetFramework=net8.0-tvos17.0]
+#   [ERR] Compile: C:\Program Files\dotnet\sdk\8.0.410\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.ImportWorkloads.targets(38,5): error NETSDK1147: To install these workloads, run the following command: dotnet workload restore [Y:\source\Avalonia\src\iOS\Avalonia.iOS\Avalonia.iOS.csproj::TargetFramework=net8.0-tvos17.0]
+#   [ERR] Compile: Target Compile has thrown an exception
+```
+
+Then:
+
+```powershell
+del -force -recurse src\iOS\Avalonia.iOS
+```
+
+and apply the following patch to `Avalonia.sln`:
+
+```diff
+diff --git a/Avalonia.sln b/Avalonia.sln
+index a0314b1c3..ca2d0d66d 100644
+--- a/Avalonia.sln
++++ b/Avalonia.sln
+@@ -58,10 +58,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{7CF9
+ EndProject
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Android", "src\Android\Avalonia.Android\Avalonia.Android.csproj", "{7B92AF71-6287-4693-9DCB-BD5B6E927E23}"
+ EndProject
+-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{0CB0B92E-6CFF-4240-80A5-CCAFE75D91E1}"
+-EndProject
+-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.iOS", "src\iOS\Avalonia.iOS\Avalonia.iOS.csproj", "{4488AD85-1495-4809-9AA4-DDFE0A48527E}"
+-EndProject
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.LeakTests", "tests\Avalonia.LeakTests\Avalonia.LeakTests.csproj", "{E1AA3DBF-9056-4530-9376-18119A7A3FFE}"
+ EndProject
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.UnitTests", "tests\Avalonia.UnitTests\Avalonia.UnitTests.csproj", "{88060192-33D5-4932-B0F9-8BD2763E857D}"
+```
+
+---
+
 Do a:
 
 ```sh
 # On all PCs except macOS (confer with devcontainer.json's "dotnet restore" notes)
 #   And if you have dotnet 8 installed replace [wasm-tools-net8] with [wasm-tools]
+#
+#   Temporary until https://github.com/AvaloniaUI/Avalonia/pull/18950:
+#   - `dotnet restore` replaced by `dotnet build` to get Avalonia local build
 dotnet workload install wasm-tools-net8 android
-dotnet restore ScoutTrainingApp.Android
-dotnet restore ScoutTrainingApp.Browser
-dotnet restore ScoutTrainingApp.Desktop
+dotnet build ScoutTrainingApp.Android
+dotnet build ScoutTrainingApp.Browser
+dotnet build ScoutTrainingApp.Desktop
 
 # On macOS
+#
+#   Temporary until https://github.com/AvaloniaUI/Avalonia/pull/18950:
+#   - `dotnet restore` replaced by `dotnet build` to get Avalonia local build
 dotnet workload restore
-dotnet restore
+dotnet build
 ```
 
 Then on Linux only:
