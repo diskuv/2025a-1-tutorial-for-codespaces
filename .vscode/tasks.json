@@ -5,6 +5,7 @@
     "tasks": [
         {
             "label": "Build.Me",
+            "detail": "Build the Browser app continuously",
             "type": "process",
             "command": "./dk",
             "windows": {
@@ -17,14 +18,15 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "isBackground": true,
             "presentation": {
-                "echo": true,
                 "reveal": "always",
                 "panel": "dedicated"
             }
         },
         {
             "label": "Run.Me",
+            "detail": "Build and start the Desktop app",
             "type": "process",
             "command": "dotnet",
             "args": [
@@ -33,14 +35,65 @@
                 "ScoutTrainingApp.Desktop"
             ],
             "group": {
-                "kind": "build",
+                "kind": "test",
             },
             "presentation": {
-                "echo": true,
                 "reveal": "silent",
                 "panel": "shared",
                 "showReuseMessage": false
             }
-        }
+        },
+        {
+            "label": "Show.Me",
+            "detail": "Run a HTTP server for the Browser app",
+            "type": "process",
+            "command": "./dk",
+            "windows": {
+                "command": ".\\dk.cmd"
+            },
+            "args": [
+                "Show.Me",
+                "--addr",
+                "127.0.0.1",
+                "--port",
+                "3100",
+                "--dir",
+                "ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot",
+            ],
+            "group": {
+                "kind": "test",
+            },
+            "isBackground": true,
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "python show published wwwroot",
+            "detail": "Only for advanced users: A python version of show me",
+            "type": "process",
+            "command": "python3",
+            "windows": {
+                "command": "python"
+            },
+            "args": [
+                "-m",
+                "http.server",
+                "--bind",
+                "127.0.0.1",
+                "-d",
+                "ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot",
+                "3100"
+            ],
+            "group": {
+                "kind": "test",
+            },
+            "isBackground": true,
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated"
+            }
+        },
     ]
 }

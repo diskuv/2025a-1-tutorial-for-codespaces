@@ -32,7 +32,7 @@ Build succeeded in 3.6s
 
 - [ ] you can see the `Build succeeded`
 
-## Run the app (only local PC users)
+## Run the Desktop app (only local PC users)
 
 > ℹ️ This is only if you are running VS Code **directly** on a desktop computer or a laptop. If you are running in GitHub Codespaces, you are running a remote computer and you should skip this step.
 
@@ -42,7 +42,7 @@ Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Run.Me`.
 
 - [ ] a new window appeared with `Welcome to Scout Training!` in the middle
 
-## Show the minimal app
+## Preview the Desktop app (only local PC users)
 
 Press Ctrl-Shift-P, then `Avalonia: Show Preview`.
 You may get a popup at the bottom right saying:
@@ -54,29 +54,69 @@ Source: Avalonia for VSCode      [Build] [Close]
 
 Press the `[Build]` button if you see that popup.
 
----
+**Verify:**
 
-ALTERNATIVE: Run in the Terminal (TODO: button or vscode task?):
+- [ ] you see the "Welcome to Scout Training"
 
-```sh
-python3 -m http.server --bind 127.0.0.1 -d ScoutTrainingApp.Browser/bin/Debug/net8.0-browser/publish/wwwroot 3100
+## Preview the Desktop app (only GitHub Codespaces users)
+
+Press Ctrl-Shift-P, then `Avalonia: Show Preview`.
+You may get a popup at the bottom right saying:
+
+```text
+Previewer is not available. Build the project first.
+Source: Avalonia for VSCode      [Build] [Close]
 ```
 
-~~Ctrl-Shift-P, then `Live Preview: Start Server`~~
+Press the `[Build]` button if you see that popup.
+
+Then you will see a `ScoutTrainingApp.Browser` tab
+appear on the right hand side. But it will show a big 🚫 symbol (a red
+circle with a slash across it)!
+
+Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`.
+On the line that has `8000` in the Ports column there will be a 🌐 symbol
+(a globe).
+
+Click on that globe and a new browser window will appear.
+
+**Verify:**
+
+- [ ] you see the "Welcome to Scout Training"
+
+## Show the Browser app (only local PC users)
+
+Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Show.Me`.
+
+Open a new web browser page to <http://localhost:3100>.
 
 ---
 
 **Verify:**
 
-- [ ] ~~a `ScoutTrainingApp.Browser` tab appears on the right hand side. It may have a red circle with a slash across it ... that is expected!~~
-- [ ] you get a popup in the lower right saying:
+- [ ] you can see the "Welcome to Scout Training" in your browser window
 
-  ```text
-  Your application running on port 3100 is available.  [See all forwarded ports]
-        [Open in Browser] [Make Public]
-  ```
+## Show the Browser app (only GitHub Codespaces users)
 
-- [ ] you have done **Open in Browser** and can see the "Welcome to Scout Training"
+Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Show.Me`.
+
+You *should* get a popup in the lower right saying:
+
+```text
+Your application running on port 3100 is available.  [See all forwarded ports]
+      [Open in Browser] [Make Public]
+```
+
+Click **Open in Browser**.
+
+> ℹ️ What if you don't see the popup? Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`. On the line that has `3100` in the Ports column there will be a 🌐 symbol
+(a globe). Click on that globe and a new browser window will appear.
+
+---
+
+**Verify:**
+
+- [ ] you have clicked on the **Open in Browser** button (or the globe) and can see the "Welcome to Scout Training"
 
 ## Make your first change
 
@@ -94,7 +134,8 @@ private string _greeting = "Welcome to Scout Training, YOUR FIRST NAME!";
 
 **Verify:**
 
-- [ ] within 30 seconds you see the change in the `ScoutTrainingApp.Browser` tab on the right hand side.
+- [ ] (local PC) within two minutes you see the change in the `ScoutTrainingApp.Browser` tab on the right hand side.
+- [ ] (GitHub Codespaces) within a minute you see the change in your *second* browser window
 
 ## Send changes to the instructor
 
