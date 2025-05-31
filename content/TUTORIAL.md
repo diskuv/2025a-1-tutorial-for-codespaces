@@ -78,7 +78,14 @@ Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`.
 On the line that has `8000` in the first **Ports** column there will be a 🌐 symbol
 (a globe) in the second **Forwarded Ports** column.
 
-Click on that globe and a new browser window will appear.
+Click on that globe and a new browser window will appear. From now on we will call that new browser window the **Preview Desktop Window**.
+
+**See nothing in the Preview Desktop Window?**
+
+1. (*skip this; may be useless*) Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainView.axaml) again,
+and add a blank line to the end of MainView.axml.
+2. Close the `Preview MainView.axaml` tab. After it is closed, press Ctrl-Shift-P, then `Avalonia: Show Preview`.
+3. In your Preview Desktop Window, reload the page (*skip: while pressing Shift*).
 
 **Verify:**
 
@@ -89,8 +96,6 @@ Click on that globe and a new browser window will appear.
 Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Show.Me`.
 
 Open a new web browser page to <http://localhost:3100>.
-
----
 
 **Verify:**
 
