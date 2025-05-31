@@ -11,10 +11,11 @@
 	],
 	"portsAttributes": {
 		"8000": {
-			"label": "Avalonia Preview",
-			// Auto-forwarding ... maybe due to a race condition ... permanently causes
-			// the Preview to be blank.
+			// The embedded webview preview _should_ work, but doesn't reach
+			// the Avalonia.Designer.HostApp.dll Previewer executable.
 			// "onAutoForward": "openPreview",
+
+			"label": "Avalonia Preview",
 			"protocol": "http"
 		},
 		"3100": {
