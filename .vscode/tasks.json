@@ -25,6 +25,26 @@
             }
         },
         {
+            "label": "Clean.Me",
+            "detail": "Clean intermediate and output directories",
+            "type": "process",
+            "command": "./dk",
+            "windows": {
+                "command": ".\\dk.cmd"
+            },
+            "args": [
+                "Clean.Me",
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
             "label": "Run.Me",
             "detail": "Build and start the Desktop app",
             "type": "process",
