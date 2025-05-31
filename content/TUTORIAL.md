@@ -60,6 +60,8 @@ Press the `[Build]` button if you see that popup.
 
 ## Preview the Desktop app (only GitHub Codespaces users)
 
+Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainView.axaml).
+
 Press Ctrl-Shift-P, then `Avalonia: Show Preview`.
 You may get a popup at the bottom right saying:
 
@@ -70,13 +72,13 @@ Source: Avalonia for VSCode      [Build] [Close]
 
 Press the `[Build]` button if you see that popup.
 
-Then you will see a `ScoutTrainingApp.Browser` tab
+Then you will see a `Preview MainView.axaml` tab
 appear on the right hand side. But it will show a big 🚫 symbol (a red
 circle with a slash across it)!
 
 Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`.
-On the line that has `8000` in the Ports column there will be a 🌐 symbol
-(a globe).
+On the line that has `8000` in the first **Ports** column there will be a 🌐 symbol
+(a globe) in the second **Forwarded Ports** column.
 
 Click on that globe and a new browser window will appear.
 
@@ -109,8 +111,8 @@ Your application running on port 3100 is available.  [See all forwarded ports]
 
 Click **Open in Browser**.
 
-> ℹ️ What if you don't see the popup? Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`. On the line that has `3100` in the Ports column there will be a 🌐 symbol
-(a globe). Click on that globe and a new browser window will appear.
+> ℹ️ What if you don't see the popup? Press Ctrl-Shift-P, then `Ports: Focus on the Ports View`. On the line that has `3100` in the first **Ports** column there will be a 🌐 symbol
+(a globe) in the second **Forwarded Ports** column. Click on that globe and a new browser window will appear.
 
 ---
 
