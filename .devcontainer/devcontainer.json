@@ -20,7 +20,7 @@
 		},
 		"3100": {
 			"label": "ScoutTrainingApp.Browser",
-			"protocol": "https"
+			"protocol": "http"
 		}
 	},
 	// Each object key in postCreateCommand will run in parallel
