@@ -56,9 +56,9 @@
 					"**/#s": true,
 					"**/dune-workspace": true
 				},
-				// GitHub Dark are available in GitHub Codespaces,
+				// GitHub Dark and GitHub Dark High Contrast are available in GitHub Codespaces,
 				// but might not be in your workspace.
-				"workbench.colorTheme": "Default High Contrast",
+				"workbench.colorTheme": "GitHub Dark High Contrast",
 				"window.autoDetectColorScheme": false				
 			}
 		},
