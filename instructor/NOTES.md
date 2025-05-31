@@ -284,7 +284,7 @@ we use the `file` transport instead:
 ```sh
 dotnet exec --runtimeconfig $PWD/ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.runtimeconfig.json \
    --depsfile $PWD/ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.deps.json \
-   /home/vscode/.nuget/packages/avalonia/11.3.0/tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll \
+   /home/vscode/.nuget/packages/avalonia/*/tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll \
    --transport file://$PWD/ScoutTrainingApp/App.axaml \
    --method html \
    --html-url http://127.0.0.1:8000 \
@@ -314,7 +314,7 @@ dotnet build ScoutTrainingApp.Desktop
 
 dotnet exec --runtimeconfig ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.runtimeconfig.json \
    --depsfile ScoutTrainingApp.Desktop/bin/Debug/net8.0/ScoutTrainingApp.Desktop.deps.json \
-   /home/vscode/.nuget/packages/avalonia/11.3.0/tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll \
+   /home/vscode/.nuget/packages/avalonia/*/tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll \
    --transport file://$PWD/ScoutTrainingApp/App.axaml \
    --method html \
    --transport file://$PWD/ScoutTrainingApp/Views/MainWindow.axaml \
