@@ -12,7 +12,7 @@ Press Ctrl-Shift-P, then `Preferences: Color Theme`. It is currently `Default Hi
 
 - [ ] that you are inside GitHub Codespaces. Your web browser should be on a page with `https://xxx-xxx-xxxx.github.dev/` in the address bar. If not, start over from the [README.md document](../README.md).
 
-## Start the app build
+## Start the Browser app build
 
 Press Ctrl-Shift-B and you should see a `Build.Me` Task running in the bottom right. It will take 5 minutes the first time for it to say **repeatedly**:
 
