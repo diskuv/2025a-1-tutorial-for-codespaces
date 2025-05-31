@@ -7,16 +7,16 @@
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
-		5235
+		8000, 3100
 	],
 	"portsAttributes": {
-		"5235": {
-			"label": "HTTP ScoutTrainingApp",
+		"8000": {
+			"label": "Avalonia Preview",
 			"onAutoForward": "openPreview",
 			"protocol": "http"
 		},
-		"7169": {
-			"label": "HTTPS ScoutTrainingApp",
+		"3100": {
+			"label": "ScoutTrainingApp.Browser",
 			"protocol": "https"
 		}
 	},
