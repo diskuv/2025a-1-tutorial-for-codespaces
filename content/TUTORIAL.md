@@ -57,15 +57,18 @@ Press the `[Build]` button if you see that popup.
 
 Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainView.axaml).
 
+> ℹ️ Is `MainView.axaml` in black and white in GitHub Codespaces? To get color, **refresh your web browser**! Then go back to the first step of the tutorial.
+
 Press Ctrl-Shift-P, then `Avalonia: Show Preview`.
-You may get a popup at the bottom right saying:
 
-```text
-Previewer is not available. Build the project first.
-Source: Avalonia for VSCode      [Build] [Close]
-```
-
-Press the `[Build]` button if you see that popup.
+> You may get a popup at the bottom right saying:
+>
+> ```text
+> Previewer is not available. Build the project first.
+> Source: Avalonia for VSCode      [Build] [Close]
+> ```
+>
+> Press the `[Build]` button if you see that popup.
 
 Then you will see a `Preview MainView.axaml` tab
 appear on the right hand side. But it will show a big 🚫 symbol (a red
