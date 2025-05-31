@@ -12,7 +12,9 @@
 	"portsAttributes": {
 		"8000": {
 			"label": "Avalonia Preview",
-			"onAutoForward": "openPreview",
+			// Auto-forwarding ... maybe due to a race condition ... permanently causes
+			// the Preview to be blank.
+			// "onAutoForward": "openPreview",
 			"protocol": "http"
 		},
 		"3100": {
