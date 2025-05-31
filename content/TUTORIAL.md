@@ -31,7 +31,7 @@ Build succeeded in 3.6s
 
 > ℹ️ This is only if you are running VS Code **directly** on a desktop computer or a laptop. If you are running in GitHub Codespaces, you are running a remote computer and you should skip this step.
 
-Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Run.Me`.
+Press Ctrl-Shift-P, then `Tasks: Run Test Task`. Then select `Run.Me`.
 
 **Verify:**
 
@@ -93,7 +93,7 @@ and add a blank line to the end of MainView.axml.
 
 ## Show the Browser app (only local PC users)
 
-Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Show.Me`.
+Press Ctrl-Shift-P, then `Tasks: Run Test Task`. Then select `Show.Me`.
 
 Open a new web browser page to <http://localhost:3100>.
 
@@ -103,7 +103,7 @@ Open a new web browser page to <http://localhost:3100>.
 
 ## Show the Browser app (only GitHub Codespaces users)
 
-Press Ctrl-Shift-P, then `Tasks: Run Task`. Then select `Show.Me`.
+Press Ctrl-Shift-P, then `Tasks: Run Test Task`. Then select `Show.Me`.
 
 You *should* get a popup in the lower right saying:
 
