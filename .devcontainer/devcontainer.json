@@ -20,24 +20,34 @@
 			"protocol": "https"
 		}
 	},
-	//
-	// --------------------------- dotnet restore ---------------------------
-	//
-	// The iOS workload (ex. Microsoft.iOS.Sdk.net8.0_18.0) will not be available
-	// on Linux:
-	// $ sudo dotnet workload install ios
-	// > Workload installation failed: Workload ID ios isn't supported on this platform.
-	//
-	// and the C# vscode extension will say
-	// "Failed to restore NuGet packages for the solution." because of that.
-	//
-	// So we skip ScoutTrainingApp.iOS and _manually_ restore only the projects we need.
-	// That also includes setting 'dotnet.projects.enableAutomaticRestore' to false
-	// in settings.json so the C# extension does not try to restore itself.
-	//
-	// BUT: Since we are using local Avalonia builds we can't do `dotnet restore`.
-	// So `dotnet build` instead.
-	"postCreateCommand": "dotnet dev-certs https && dotnet build ScoutTrainingApp.Desktop && dotnet build ScoutTrainingApp.Browser",
+	// Each object key in postCreateCommand will run in parallel
+	"postCreateCommand": {
+		// In GitHub Codespaces we'll only have a single "Initial commit".
+		// But direct launch of Dev Container will keep the full history.
+		// And launching Dev Container within VS Code will also keep the working files, especially Jutjutsu.
+		// So we:
+		// 1. add a distinct remote called 'instruction'
+		// 2. setup jj if it hasn't been already
+		"git": "git remote add instruction https://gitlab.com/dkml/education/ui-series/2025a/1-tutorial-for-codespaces.git && { [ -e .jj ] || jj git init --colocate; }",
+		//
+		// --------------------------- dotnet restore ---------------------------
+		//
+		// The iOS workload (ex. Microsoft.iOS.Sdk.net8.0_18.0) will not be available
+		// on Linux:
+		// $ sudo dotnet workload install ios
+		// > Workload installation failed: Workload ID ios isn't supported on this platform.
+		//
+		// and the C# vscode extension will say
+		// "Failed to restore NuGet packages for the solution." because of that.
+		//
+		// So we skip ScoutTrainingApp.iOS and _manually_ restore only the projects we need.
+		// That also includes setting 'dotnet.projects.enableAutomaticRestore' to false
+		// in settings.json so the C# extension does not try to restore itself.
+		//
+		// BUT: Since we are using local Avalonia builds we can't do `dotnet restore`.
+		// So `dotnet build` instead.
+		"dotnet": "dotnet dev-certs https && dotnet build ScoutTrainingApp.Desktop && dotnet build ScoutTrainingApp.Browser"
+	},
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {

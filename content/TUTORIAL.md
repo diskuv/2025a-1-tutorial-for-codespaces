@@ -1,8 +1,3 @@
----
-presentation:
-  slideNumber: true
----
-
 # Tutorial
 
 ## Are you in the right place?
