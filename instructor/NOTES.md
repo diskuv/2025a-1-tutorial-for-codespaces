@@ -156,11 +156,13 @@ You will first need a local build of Avalonia which is temporary until <https://
 # (Windows only) Install npm
 winget install -e --id OpenJS.NodeJS
 
+dotnet tool install --global Nuke.GlobalTool --version 6.2.1
+
 git clone https://github.com/jonahbeckford/Avalonia.git ../Avalonia
 git -C ../Avalonia reset --hard 71618b9150bf582fd98975d39f6125c3d5417f45
 git -C ../Avalonia submodule update --init --recursive
 OLDPWD=$(pwd) && cd ../Avalonia
-nuke --target BuildToNuGetCache --configuration Debug
+~/.dotnet/tools/nuke --target BuildToNuGetCache --configuration Debug
 cd $OLDPWD
 ```
 
@@ -219,7 +221,7 @@ dotnet build ScoutTrainingApp.Desktop
 #
 #   Temporary until https://github.com/AvaloniaUI/Avalonia/pull/18950:
 #   - `dotnet restore` replaced by `dotnet build` to get Avalonia local build
-dotnet workload restore
+sudo dotnet workload restore
 dotnet build
 ```
 
