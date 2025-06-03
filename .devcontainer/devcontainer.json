@@ -31,7 +31,10 @@
 		// So we:
 		// 1. add a distinct remote called 'instruction'
 		// 2. setup jj if it hasn't been already
-		"git": "git remote add instruction https://gitlab.com/dkml/education/ui-series/2025a/1-tutorial-for-codespaces.git && { [ -e .jj ] || jj git init --colocate; }",
+		// 3. increase the maximum file size allowed for new files so that
+		//    ScoutTrainingApp\Assets\Fonts\WenQuanYiMicroHei-01.ttf from the
+		//    ControlSamples is allowed
+		"git": "git remote add instruction https://gitlab.com/dkml/education/ui-series/2025a/1-tutorial-for-codespaces.git && { [ -e .jj ] || jj git init --colocate; } && jj config set --repo snapshot.max-new-file-size 4505016",
 		//
 		// --------------------------- dotnet restore ---------------------------
 		//
