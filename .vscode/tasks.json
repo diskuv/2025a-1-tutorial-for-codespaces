@@ -117,10 +117,27 @@
         },
         // ----------------- Lesson Tasks -----------------------
         // To edit:
-        //   jj edit -r 'subject(exact:"Lesson tasks")'
+        //   jj new -A main -m "Update lesson tasks"
         //
         // To reconstruct run the following and remove the outer square brackets:
         //   jj log -r 'descendants(main) & subject(regex:"^[0-9]{4}:")' --no-graph -T '"{\"id\":\"" ++ description.first_line().substr(0,4) ++ "\",\"description\":" ++ description.first_line().substr(5,1000).trim().escape_json() ++ "}\n"' | jq -s 'sort_by(.id) | map({label:("Turn to " + .id + ""), detail:.description, type:"process", command:"jj", args:["new","-r","descendants(main) & subject(regex:\"^" + .id + ":\")"], group:"test",presentation:{reveal:"silent",panel:"shared","showReuseMessage":false}})'  
+        {
+            "label": "Turn to 1900",
+            "detail": "Avalonia Control Gallery",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1900:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
         {
             "label": "Turn to 2000",
             "detail": "BasicMVVMSample. CommunityToolkit. Name field",
