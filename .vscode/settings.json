@@ -20,5 +20,8 @@
     "markdown.preview.openMarkdownLinks": "inPreview",
     "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
     "markdown-preview-enhanced.enableScriptExecution": true,
-    "git.enabled": false
+    "git.enabled": false,
+    "[xaml]": {
+        "editor.defaultFormatter": "dabbinavo.xamlstyler"
+    }
 }
