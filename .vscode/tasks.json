@@ -120,7 +120,194 @@
         //   jj new -A main -m "Update lesson tasks"
         //
         // To reconstruct run the following and remove the outer square brackets:
-        //   jj log -r 'descendants(main) & subject(regex:"^[0-9]{4}:")' --no-graph -T '"{\"id\":\"" ++ description.first_line().substr(0,4) ++ "\",\"description\":" ++ description.first_line().substr(5,1000).trim().escape_json() ++ "}\n"' | jq -s 'sort_by(.id) | map({label:("Turn to " + .id + ""), detail:.description, type:"process", command:"jj", args:["new","-r","descendants(main) & subject(regex:\"^" + .id + ":\")"], group:"test",presentation:{reveal:"silent",panel:"shared","showReuseMessage":false}})'  
+        //   jj log -r 'descendants(main) & subject(regex:"^[0-9]{4}:")' --no-graph -T '"{\"id\":\"" ++ description.first_line().substr(0,4) ++ "\",\"description\":" ++ description.first_line().substr(5,1000).trim().escape_json() ++ "}\n"' | jq -s 'sort_by(.id) | map({label:("Turn to " + .id + ""), detail:.description, type:"process", command:"jj", args:["new","-r","descendants(main) & subject(regex:\"^" + .id + ":\")"], group:"test",presentation:{reveal:"silent",panel:"shared","showReuseMessage":false}})'
+        {
+            "label": "Turn to 1800",
+            "detail": "Layouts. StackPanel",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1800:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1810",
+            "detail": "Layouts. Introduction to Element Positioning",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1810:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1820",
+            "detail": "Layouts. Understanding Alignment Properties. Horizontal",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1820:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1830",
+            "detail": "Layouts. Canvas",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1830:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1840",
+            "detail": "Layouts. Dock",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1840:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1850",
+            "detail": "Layouts. Grid",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1850:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1860",
+            "detail": "Layouts. WrapPanel",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1860:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1870",
+            "detail": "Layouts. UniformGrid",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1870:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1880",
+            "detail": "Layouts. Grid and VerticalAlignment",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1880:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1890",
+            "detail": "Layouts. Margin and Padding",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1890:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 1895",
+            "detail": "Layouts. Practice Yourself",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^1895:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
         {
             "label": "Turn to 1900",
             "detail": "Avalonia Control Gallery",
