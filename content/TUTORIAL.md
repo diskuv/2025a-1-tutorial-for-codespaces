@@ -148,11 +148,23 @@ private string _greeting = "Welcome to Scout Training, YOUR FIRST NAME!";
 
 ## Send changes to the instructor
 
+Hover over the following ... on the right hand side you should see a Play button:
+
 ```ocaml {cmd="dk" args=["--project-dir", "..", "-s", "$input_file", "Run"]}
 let __init () = SendStd_Std.Me.__init ()
 ```
+
+Press the green <span style="color: green">▶</span> button.
 
 **Verify:**
 
 - [ ] you see and have followed the instruction `Paste this link in the chat window`.
 - [ ] your instructor tells you they received your changes.
+
+## Start the lessons
+
+Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`.
+
+There are several lessons you can start. They all are `Turn to [the lesson number]`.
+
+Your instructor will tell you which lesson number for today. If you are self-directed, do each lesson number in lowest-to-highest order.
