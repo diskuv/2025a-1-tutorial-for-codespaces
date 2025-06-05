@@ -171,6 +171,57 @@
                 "panel": "shared",
                 "showReuseMessage": false
             }
+        },
+        {
+            "label": "Turn to 2100",
+            "detail": "CommandSample",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^2100:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 2200",
+            "detail": "BasicViewLocatorSample",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^2200:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Turn to 2300",
+            "detail": "SimpleToDoList",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^2300:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
         }
     ]
 }
