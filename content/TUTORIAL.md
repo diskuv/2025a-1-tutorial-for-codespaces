@@ -4,9 +4,9 @@
 
 You should be viewing this in a Chrome or Edge browser. Do not use Safari on macOS!
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Markdown: Markdown Preview Enhanced: Open Preview to the Side`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Markdown: Markdown Preview Enhanced: Open Preview to the Side`.
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Preferences: Color Theme`. It is currently `Default High Contrast`. You might want `GitHub Dark`, `GitHub Light` or `GitHub Light (colorblind)` instead.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Preferences: Color Theme`. It is currently `Default High Contrast`. You might want `GitHub Dark`, `GitHub Light` or `GitHub Light (colorblind)` instead.
 
 > ℹ️ For GitHub Codespaces users, you must refresh your web browser to see the color theme changes.
 
@@ -33,7 +33,7 @@ Build succeeded in 3.6s
 
 > ℹ️ This is only if you are running VS Code **directly** on a desktop computer or a laptop. If you are running in GitHub Codespaces, you are running a remote computer and you should skip this step.
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`. Then select `Run.Me`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Tasks: Run Test Task`. Then select `Run.Me`.
 
 **Verify:**
 
@@ -43,7 +43,7 @@ Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`. Then 
 
 Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainView.axaml).
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Avalonia: Show Preview`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Avalonia: Show Preview`.
 You may get a popup at the bottom right saying:
 
 ```text
@@ -65,7 +65,7 @@ Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainV
 
 > ℹ️ Is `MainView.axaml` in black and white in GitHub Codespaces? To get color, **refresh your web browser**! Then go back to the first step of the tutorial.
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Avalonia: Show Preview`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Avalonia: Show Preview`.
 
 > You may get a popup at the bottom right saying:
 >
@@ -80,7 +80,7 @@ Then you will see a `Preview MainView.axaml` tab
 appear on the right hand side. But it will show a big 🚫 symbol (a red
 circle with a slash across it)!
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Ports: Focus on the Ports View`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Ports: Focus on the Ports View`.
 On the line that has `8000` in the first **Ports** column there will be a 🌐 symbol
 (a globe) in the second **Forwarded Ports** column.
 
@@ -90,7 +90,7 @@ Click on that globe and a new browser window will appear. From now on we will ca
 
 1. (*skip this; may be useless*) Click on [ScoutTrainingApp/Views/MainView.axaml](../ScoutTrainingApp/Views/MainView.axaml) again,
 and add a blank line to the end of MainView.axml.
-2. Close the `Preview MainView.axaml` tab. After it is closed, press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Avalonia: Show Preview`.
+2. Close the `Preview MainView.axaml` tab. After it is closed, Open the Command Palette (Cmd/Ctrl + Shift + P), then `Avalonia: Show Preview`.
 3. In your Desktop Preview Window, reload the page (*skip: while pressing Shift*).
 
 **Verify:**
@@ -99,7 +99,7 @@ and add a blank line to the end of MainView.axml.
 
 ## Show the Browser app (only local PC users)
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`. Then select `Show.Me`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Tasks: Run Test Task`. Then select `Show.Me`.
 
 Click on <http://localhost:3100> to see it in a browser window.
 
@@ -109,7 +109,7 @@ Click on <http://localhost:3100> to see it in a browser window.
 
 ## Show the Browser app (only GitHub Codespaces users)
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`. Then select `Show.Me`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Tasks: Run Test Task`. Then select `Show.Me`.
 
 You *should* get a popup in the lower right saying:
 
@@ -120,7 +120,7 @@ Your application running on port 3100 is available.  [See all forwarded ports]
 
 Click **Open in Browser**.
 
-> ℹ️ What if you don't see the popup? Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Ports: Focus on the Ports View`. On the line that has `3100` in the first **Ports** column there will be a 🌐 symbol
+> ℹ️ What if you don't see the popup? Open the Command Palette (Cmd/Ctrl + Shift + P), then `Ports: Focus on the Ports View`. On the line that has `3100` in the first **Ports** column there will be a 🌐 symbol
 (a globe) in the second **Forwarded Ports** column. Click on that globe and a new browser window will appear.
 
 **Verify:**
@@ -163,7 +163,7 @@ Press the green <span style="color: green">▶</span> button.
 
 ## Start the lessons
 
-Press Ctrl-Shift-P (or Cmd-Shift-P on macOS), then `Tasks: Run Test Task`.
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Tasks: Run Test Task`.
 
 There are several lessons you can start. They all are `Turn to [the lesson number]`.
 
