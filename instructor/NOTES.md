@@ -8,7 +8,7 @@ With:
 
 * The Markdown Preview Enhanced plugin
 * The vscode setting `"markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true` to make any `.md` Markdown document have a preview opened automatically.
-* The devcontainer setting `"openFiles": ["content/TUTORIAL.md"]` to open the tutorial when GitHub Codespaces starts
+* The devcontainer setting `"openFiles": ["content/TUTORIAL-GitHub-Codespaces.md"]` to open the tutorial when GitHub Codespaces starts
 
 we can use:
 

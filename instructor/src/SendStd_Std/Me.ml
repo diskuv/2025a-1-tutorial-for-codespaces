@@ -90,6 +90,7 @@ let send ~host ctx =
   in
   let sourcefiles' =
     Fpath.(v projectdir / "content" / "TUTORIAL.md")
+    :: Fpath.(v projectdir / "content" / "TUTORIAL-GitHub-Codespaces.md")
     :: List.filter
          (fun i ->
            Logs.debug (fun l -> l "+ %a" Fpath.pp i);

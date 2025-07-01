@@ -14,7 +14,7 @@ You are ready when you see a webpage in your remote workspace editor that says *
 
 ---
 
-Are you currently in a training session? You need to start in the first [content/TUTORIAL.md](content/TUTORIAL.md).
+Are you currently in a training session? You need to start in the first [content/TUTORIAL-GitHub-Codespaces.md](content/TUTORIAL-GitHub-Codespaces.md).
 
 ---
 
