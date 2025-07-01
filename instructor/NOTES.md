@@ -345,3 +345,7 @@ An attempt at running the Desktop in an offline X11 buffer and using the display
 ```sh
 xpra start --start='dotnet run --project ScoutTrainingApp.Desktop' --html=on --printing=no --attach=yes --xvfb='Xvfb +extension GLX +extension Composite -screen 0 1024x768x24+32 -nolisten tcp -noreset -auth $XAUTHORITY -dpi 96x96' --resize-display=no --dbus-proxy=no --dbus-control=no --pulseaudio=no --speaker=off --notifications=no --system-tray=no --audio=no --webcam=no --terminate-children=yes --mmap=no --bind-tcp=127.0.0.1:10000 --daemon=yes
 ```
+
+```sh
+rm -rf /home/vscode/.local/share/dkcoder/ /home/vscode/.cache/dkcoder/ /home/vscode/.local/state/dkcoder/
+```

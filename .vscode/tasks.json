@@ -11,6 +11,11 @@
             "windows": {
                 "command": ".\\dk.cmd"
             },
+            "options": {
+                "env": {
+                    "DK_FACADE": "UPGRADE_NEVER"
+                }
+            },
             "args": [
                 "Build.Me"
             ],
@@ -31,6 +36,11 @@
             "command": "./dk",
             "windows": {
                 "command": ".\\dk.cmd"
+            },
+            "options": {
+                "env": {
+                    "DK_FACADE": "UPGRADE_NEVER"
+                }
             },
             "args": [
                 "Clean.Me",
@@ -70,6 +80,11 @@
             "command": "./dk",
             "windows": {
                 "command": ".\\dk.cmd"
+            },
+            "options": {
+                "env": {
+                    "DK_FACADE": "UPGRADE_NEVER"
+                }
             },
             "args": [
                 "Show.Me",
