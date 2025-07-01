@@ -23,25 +23,30 @@
 set -euf
 
 # Update within dksdk-coder:
-#   f_dk() { jq -r 'def ck(p): .files[] | select(.path == p).checksum.sha256; { majminpat_ver:.listing_unencrypted.version, ck_darwin_arm64:ck("dk-darwin_arm64"), ck_darwin_x86_64:ck("dk-darwin_x86_64"), ck_linux_x86_64:ck("dist/dk-linux_x86_64"), ck_linux_x86:ck("dist/dk-linux_x86"), fn:input_filename } | "# "+.fn+"\n"+"majminpat_ver="+.majminpat_ver+"\n"+"cksum256_darwin_arm64="+.ck_darwin_arm64+"\n"+"cksum256_darwin_x86_64="+.ck_darwin_x86_64+"\n"+"cksum256_linux_x86="+.ck_linux_x86+"\n"+"cksum256_linux_x86_64="+.ck_linux_x86_64 ' $1 }
-#   eval $(awk '$2=="f_dk()" {$1=""; print}' dk-new) # avoids typing the line above
+#   f_dk() { jq -r 'def ck(p): .files[] | select(.path == p).checksum.sha256; { majminpat_ver:.listing_unencrypted.version, ck_darwin_arm64:ck("dk-darwin_arm64"), ck_darwin_x86_64:ck("dk-darwin_x86_64"), ck_linux_x86_64:ck("dk-linux_x86_64"), ck_linux_x86:ck("dk-linux_x86"), fn:input_filename } | "# "+.fn+"\n"+"majminpat_ver="+.majminpat_ver+"\n"+"cksum256_darwin_arm64="+.ck_darwin_arm64+"\n"+"cksum256_darwin_x86_64="+.ck_darwin_x86_64+"\n"+"cksum256_linux_x86="+.ck_linux_x86+"\n"+"cksum256_linux_x86_64="+.ck_linux_x86_64 ' $1; }
+#   eval $(awk '$2=="f_dk()" {$1=""; print}' dk) # avoids typing the line above
 #   f_dk packaging/specs/2.3.202505280211.json
-#
-# packaging/specs/2.3.202505280211.json
-majminpat_ver=2.3.202505280211
-cksum256_darwin_arm64=cfad5fadc5b2c4b61c2b299d237db6506cc673fce98686bf5978a010fc8b6945
-cksum256_darwin_x86_64=095dc6a22f27aa918d1b582791a647829e111e9dbae9f5549c8f60ab5294f884
-cksum256_linux_x86=c2ef7e6d1d496851fcd2b1d9f9cd14a2559e0baa7b807f5cdcd38a6e78a8fd3f
-cksum256_linux_x86_64=6b9542a0f8b4730cccf929f7df59133a0590457c30d98047d34d5dba6633d20d
+# -------------------------------------
+# packaging/specs/2.4.202506160116-signed.json
+majminpat_ver=2.4.202506160116-signed
+cksum256_darwin_arm64=95f183dec1b16fb4cd01863c6a3c44dd1d18086ae1d8f413bdeec2095671451e
+cksum256_darwin_x86_64=1b8048db2117dbea37fd50205d77115a5974346c458672ba5e10278f3be505bb
+cksum256_linux_x86=c68939fd68174bed924401e9c97134cf778c765476bc5f98b673fdb44570a2ea
+cksum256_linux_x86_64=9ee84e4d74b857833b98b5f91fb056077be816c612960199610ef966cb89b360
+# note: cksum256_linux_x86 dk.exe affected by https://github.com/diskuv/dk/issues/5.
 
 dk_pwd=$PWD
 
-# --- Quiet or Away mode detection ---
-# Any command like ./dk DkRun_V0_1.RunQuiet that ends in "Quiet".
+# --- Quiet mode detection ---
+# Any command like ./dk StdStd_V0_1.RunQuiet that ends in "Quiet".
 # However, for user safety won't quiet a command if `sudo` is required.
+#
+# Enabled? If suffix of the first argument is "Quiet"
+# Example: `StdStd_V0_1.RunQuiet`
+# Edge Case: `--fixed-length-modules false RunQuiet` for IDE integration
 
 DKCODER_QUIET=0
-DKCODER_AWAY=0
+_DKEXE_OPTIONS=
 run_maybe_quiet() {
   "$@" >&2 # Always redirect stdout to stderr in this script
 }
@@ -54,14 +59,24 @@ if [ $# -ge 1 ]; then
   case "$1" in
     *Quiet)
       DKCODER_QUIET=1
+      _DKEXE_OPTIONS="-l ERROR"
       run_maybe_quiet() {
         "$@" > /dev/null 2> /dev/null
       }
       printf_maybe_quiet() {
         true
       } ;;
-    *Away)
-      DKCODER_AWAY=1
+  esac
+  case "${3:-}" in # Edge Case
+    *Quiet)
+      DKCODER_QUIET=1
+      _DKEXE_OPTIONS="-l ERROR"
+      run_maybe_quiet() {
+        "$@" > /dev/null 2> /dev/null
+      }
+      printf_maybe_quiet() {
+        true
+      } ;;
   esac
 fi
 
@@ -454,13 +469,19 @@ downloadfile() {
     # Set DKMLSYS_*
     autodetect_system_binaries
 
+    # Quick exit if exists and checksum verified. Do not display
+    # anything (even the checksum output) since this is the normal scenario
+    # that can run a billion times. The checksum verification for the
+    # download (if this fails) will not be silenced.
     if [ -e "$downloadfile_FILE" ]; then
-        if sha256check "$downloadfile_FILE" "$downloadfile_SUM"; then
+        if sha256check "$downloadfile_FILE" "$downloadfile_SUM" > /dev/null 2>&1; then
             return 0
         else
             $DKMLSYS_RM -f "$downloadfile_FILE"
         fi
     fi
+
+    printf_maybe_quiet "... %s %s\n" "Downloading" "$downloadfile_URL"
     if [ "${CI:-}" = true ] || [ "${DKCODER_QUIET:-}" -eq 1 ]; then
         if [ -n "$DKMLSYS_CURL" ]; then
             log_trace "$DKMLSYS_CURL" -L -s "$downloadfile_URL" -o "$downloadfile_FILE".tmp
@@ -480,10 +501,12 @@ downloadfile() {
             exit 107
         fi
     fi
+    printf_maybe_quiet "\n... %s %s\n" "Verifying" "$downloadfile_URL"
     if ! sha256check "$downloadfile_FILE".tmp "$downloadfile_SUM"; then
         printf "%s\n" "FATAL: Encountered a corrupted or compromised download from $downloadfile_URL" >&2
         exit 1
     fi
+    printf_maybe_quiet "\n"
     $DKMLSYS_MV "$downloadfile_FILE".tmp "$downloadfile_FILE"
 }
 
@@ -499,9 +522,9 @@ autodetect_system_binaries
 autodetect_buildhost_arch
 
 # Use the project tree as the current directory
-PROJ_DIR=$(dirname "$0")
-PROJ_DIR=$(cd "$PROJ_DIR" && pwd)
-cd "$PROJ_DIR"
+DKCODER_PROJECT_DIR=$(dirname "$0")
+DKCODER_PROJECT_DIR=$(cd "$DKCODER_PROJECT_DIR" && pwd)
+cd "$DKCODER_PROJECT_DIR"
 
 # --- DkCoder data home ---
 
@@ -515,8 +538,8 @@ fi
 #   2. Check if CI since many CI providers can only cache content in a subdirectory
 #      of the project.
 if [ -z "$tools_dir" ] && [ "${CI:-}" = true ]; then
-  install -d "$PROJ_DIR/.z-dk/tools"
-  tools_dir="$PROJ_DIR/.z-dk/tools"
+  install -d "$DKCODER_PROJECT_DIR/.z-dk/tools"
+  tools_dir="$DKCODER_PROJECT_DIR/.z-dk/tools"
 fi
 #   3. Check in locations rooted under /opt/diskuv
 #      We look under a /opt/diskuv early because
@@ -616,24 +639,18 @@ DK_EXE=
 destdir=$tools_dir/dkexe-$majminpat_ver-$BUILDHOST_ARCH
 install -d "$destdir"
 download_helper() {
-  download_helper_OS=$1; shift
   download_helper_CKSUM=$1; shift
-  download_helper_SUBPATH=
-  case "$download_helper_OS" in
-    Linux|Windows) download_helper_SUBPATH=dist/
-  esac
-  printf_maybe_quiet "%s dk-%s for %s\n\n" "-- Downloading" "$majminpat_ver" "$download_helper_OS"
   downloadfile \
-    "https://diskuv.com/a/dk-distribution/$majminpat_ver/${download_helper_SUBPATH}dk-$BUILDHOST_ARCH" \
+    "https://diskuv.com/a/dk-exe/$majminpat_ver/dk-$BUILDHOST_ARCH" \
     "$destdir/dk" \
     "$download_helper_CKSUM"
 }
 download_dk() {
   case "$BUILDHOST_ARCH" in
-    darwin_arm64) download_helper macOS $cksum256_darwin_arm64 ;;
-    darwin_x86_64) download_helper macOS $cksum256_darwin_x86_64 ;;
-    linux_x86_64) download_helper Linux $cksum256_linux_x86_64 ;;
-    linux_x86) download_helper Linux $cksum256_linux_x86 ;;
+    darwin_arm64) download_helper $cksum256_darwin_arm64 ;;
+    darwin_x86_64) download_helper $cksum256_darwin_x86_64 ;;
+    linux_x86_64) download_helper $cksum256_linux_x86_64 ;;
+    linux_x86) download_helper $cksum256_linux_x86 ;;
     *) echo "FATAL: There is no support for $BUILDHOST_ARCH" >&2; exit 3 ;;
   esac
 }
@@ -653,19 +670,13 @@ fi
 # Set DK_EXE
 DK_EXE="$destdir/dk"
 
-# --- Console ---
-
-if [ -t 0 ]; then
-  dk_tty=1
-else
-  dk_tty=0
-fi
-
 # --- Run dk executable ---
 
-if [ "$DKCODER_AWAY" -eq 0 ]; then cd "$PROJ_DIR"; fi
+#   We already changed to DKCODER_PROJECT_DIR earlier. Be explicit anyway.
+cd "$DKCODER_PROJECT_DIR"
 
 export DKCODER_ARG0="$0"
-export DKCODER_TTY=$dk_tty
 export DKCODER_PWD="$dk_pwd"
-exec "$DK_EXE" --project-dir "$PROJ_DIR" "$@"
+export DKCODER_PROJECT_DIR
+#   shellcheck disable=SC2086
+exec "$DK_EXE" $_DKEXE_OPTIONS "$@"
