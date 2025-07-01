@@ -27,14 +27,16 @@
 	"postCreateCommand": {
 		// In GitHub Codespaces we'll only have a single "Initial commit".
 		// But direct launch of Dev Container will keep the full history.
+		// Worse, our jj-based tasks will not work because jj needs the full history to jump around.
 		// And launching Dev Container within VS Code will also keep the working files, especially Jutjutsu.
 		// So we:
 		// 1. add a distinct remote called 'instruction'
-		// 2. setup jj if it hasn't been already
-		// 3. increase the maximum file size allowed for new files so that
+		// 2. fetch the remote and switch to the main branch to get the full history
+		// 3. setup jj if it hasn't been already
+		// 4. increase the maximum file size allowed for new files so that
 		//    ScoutTrainingApp\Assets\Fonts\WenQuanYiMicroHei-01.ttf from the
 		//    ControlSamples is allowed
-		"git": "git remote add instruction https://gitlab.com/dkml/education/ui-series/2025a/1-tutorial-for-codespaces.git && { [ -e .jj ] || jj git init --colocate; } && jj config set --repo snapshot.max-new-file-size 4505016",
+		"git": "git remote add instruction https://gitlab.com/dkml/education/ui-series/2025a/1-tutorial-for-codespaces.git && git fetch instruction && { [ -e .jj ] || git reset --hard instruction/main; } && { [ -e .jj ] || jj git init --colocate; } && jj config set --repo snapshot.max-new-file-size 4505016",
 		//
 		// --------------------------- dotnet restore ---------------------------
 		//
