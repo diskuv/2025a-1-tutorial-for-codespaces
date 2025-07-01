@@ -63,7 +63,8 @@
 				"ms-dotnettools.csdevkit",
 				"avaloniateam.vscode-avalonia",
 				"dabbinavo.xamlstyler",
-				"shd101wyy.markdown-preview-enhanced"
+				"shd101wyy.markdown-preview-enhanced",
+				"spencerwmiles.vscode-task-buttons"
 			],
 			"settings": {
 				"files.exclude": {

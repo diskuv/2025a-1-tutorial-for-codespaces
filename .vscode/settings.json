@@ -1,7 +1,6 @@
 {
     "dotnetAcquisitionExtension.enableTelemetry": false,
     "telemetry.feedback.enabled": false,
-
     // Confer with devcontainer.json's "dotnet restore" notes
     "dotnet.projects.enableAutomaticRestore": false,
     "chat.agent.enabled": false,
@@ -23,5 +22,20 @@
     "git.enabled": false,
     "[xaml]": {
         "editor.defaultFormatter": "dabbinavo.xamlstyler"
-    }
+    },
+    "VsCodeTaskButtons.showCounter": false,
+    "VsCodeTaskButtons.tasks": [
+        {
+            "alignment": "right",
+            "label": "$(beaker) Build.Me",
+            "task": "Build.Me",
+            "tooltip": "Build the Browser application"
+        },
+        {
+            "alignment": "right",
+            "label": "$(eye) Show.Me",
+            "task": "Show.Me",
+            "tooltip": "Show the Browser application"
+        }
+    ]
 }
