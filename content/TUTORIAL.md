@@ -16,7 +16,7 @@ Open the Command Palette (Cmd/Ctrl + Shift + P), then `Preferences: Color Theme`
 
 ## Start the Browser app build
 
-Press Ctrl-Shift-B and you should see a `Build.Me` Task running in the bottom right. It will take 5 minutes the first time for it to say **repeatedly**:
+Open the Command Palette (Cmd/Ctrl + Shift + P), then `Tasks: Run Build Task` and you should see a `Build.Me` Task running in the bottom right. It will take 5 minutes the first time for it to say **repeatedly**:
 
 ```text
 Build succeeded in 3.6s
