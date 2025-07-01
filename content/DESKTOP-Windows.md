@@ -60,4 +60,4 @@ if ($LASTEXITCODE -eq 0) {exit}
 dotnet build
 ```
 
-**LAST**, click on the [TUTORIAL.md](TUTORIAL.md) to start the tutorial with your instructor.
+**LAST**, click on the [TUTORIAL-PC.md](TUTORIAL-PC.md) to start the tutorial with your instructor.

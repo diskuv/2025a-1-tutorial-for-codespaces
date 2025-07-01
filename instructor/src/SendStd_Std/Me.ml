@@ -89,7 +89,7 @@ let send ~host ctx =
         StdExit.exit 3
   in
   let sourcefiles' =
-    Fpath.(v projectdir / "content" / "TUTORIAL.md")
+    Fpath.(v projectdir / "content" / "TUTORIAL-PC.md")
     :: Fpath.(v projectdir / "content" / "TUTORIAL-GitHub-Codespaces.md")
     :: List.filter
          (fun i ->
