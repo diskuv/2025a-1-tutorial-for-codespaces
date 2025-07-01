@@ -41,7 +41,7 @@ let publish_continually () =
     publish ()
   done
 
-let __init () =
+let __init (_ : DkCoder_Std.Context.t) =
   Tr1Logs_Term.TerminalCliOptions.init ();
   let open Cmdliner in
   let publish_t =

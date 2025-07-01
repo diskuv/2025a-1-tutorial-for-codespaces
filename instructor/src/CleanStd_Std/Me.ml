@@ -38,7 +38,7 @@ let clean () =
       Logs.err (fun l -> l "%s failed ...@ %a" __MODULE_ID__ Fmt.lines msg);
       StdExit.exit 1
 
-let __init () =
+let __init (_ : DkCoder_Std.Context.t) =
   Tr1Logs_Term.TerminalCliOptions.init ();
   let open Cmdliner in
   let clean_t =

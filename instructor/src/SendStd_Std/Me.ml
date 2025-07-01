@@ -28,12 +28,11 @@ let sha256_file file =
   in
   Result.map Digestif.SHA256.to_hex res
 
-let send ~host () =
-  let ctx = DkCoder_Std.Context.get_exn () in
+let send ~host ctx =
   let projectdir = DkCoder_Std.Context.project_dir ctx |> Option.get in
   (* Define where [ffsend] should be downloaded from and saved to *)
   let ffsend, sha256, uri =
-    match DkCoder_Std.Host.abi with
+    match DkCoder_Std.Context.abi ctx with
     | `Linux_x86_64 ->
         ( Fpath.(
             v projectdir / "ScoutTrainingApp" / "bin" / "ffsend"
@@ -55,7 +54,7 @@ let send ~host () =
         )
     | _ ->
         Logs.err (fun l ->
-            l "Unsupported host abi %s" DkCoder_Std.Host.abi_name);
+            l "Unsupported host abi %s" (DkCoder_Std.Context.abi_name ctx));
         StdExit.exit 1
   in
   (* Download [ffsend] if needed *)
@@ -114,7 +113,7 @@ let send ~host () =
       Logs.err (fun l -> l "@[<v>upload failed ...@ %a@]" Fmt.lines msg);
       StdExit.exit 2
 
-let __init () =
+let __init (ctx : DkCoder_Std.Context.t) =
   Tr1Logs_Term.TerminalCliOptions.init ();
   let open Cmdliner in
   let host_t =
@@ -129,7 +128,7 @@ let __init () =
   in
   let publish_t =
     Term.(
-      const (fun _cliopts host -> send ~host ())
+      const (fun _cliopts host -> send ~host ctx)
       $ Tr1Logs_Term.TerminalCliOptions.term ~short_opts:() ()
       $ host_t)
   in

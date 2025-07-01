@@ -77,4 +77,4 @@ let main () =
   | Ok () -> ()
   | Error e -> raise e
 
-let __init () = main ()
+let __init (_ : DkCoder_Std.Context.t) = main ()
