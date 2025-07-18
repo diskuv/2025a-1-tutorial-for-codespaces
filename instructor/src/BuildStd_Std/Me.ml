@@ -6,13 +6,17 @@ module StdExit = Tr1Stdlib_V414Extras.StdExit
 (** Builds the Browser app continuously so that "restore" is done implicitly,
     and once it succeeds then continuously run the "publish --no-restore". *)
 
+(** [configuration] is ["Release"] to avoid issues like
+    {:https://github.com/dotnet/AspNetCore.Docs/issues/24443}. *)
+let configuration = "Release"
+
 let build () =
   let open Bos in
   match
     OS.Cmd.run
       Cmd.(
         v "dotnet" % "build" % "ScoutTrainingApp.Browser" % "--configuration"
-        % "Debug")
+        % configuration)
   with
   | Ok () -> true
   | Error (`Msg msg) ->
@@ -25,7 +29,7 @@ let publish () =
     OS.Cmd.run
       Cmd.(
         v "dotnet" % "publish" % "ScoutTrainingApp.Browser" % "--configuration"
-        % "Debug" % "--no-restore")
+        % configuration % "--no-restore")
   with
   | Ok () -> ()
   | Error (`Msg msg) ->
