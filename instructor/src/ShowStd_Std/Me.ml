@@ -6,6 +6,20 @@ module Scanf = Tr1Stdlib_V414CRuntime.Scanf
 module S = Tr1TinyHttpd_Std.TinyHttpd
 module D = Tr1TinyHttpd_Std.TinyHttpd.Dir
 module Log = Tr1TinyHttpd_Std.TinyHttpd.Log
+module Format = Tr1Stdlib_V414CRuntime.Format
+module IO = Tr1TinyHttpd_Std.TinyHttpd.IO
+module String = Tr1Stdlib_V414Base.String
+
+let content_type_middleware
+    (existing_chain :
+      IO.Input.t S.Request.t -> resp:(S.Response.t -> unit) -> unit) =
+ fun (req : IO.Input.t S.Request.t) ~(resp : S.Response.t -> unit) : unit ->
+  match S.Request.path req with
+  | path when String.ends_with ~suffix:".wasm" path ->
+      existing_chain req ~resp:(fun r ->
+          let r' = S.Response.set_header "Content-Type" "application/wasm" r in
+          resp r')
+  | _ -> existing_chain req ~resp
 
 let serve ~config ~timeout (dir : string) addr port j : _ result =
   let server = S.create ~max_connections:j ~addr ~port ~timeout () in
@@ -16,6 +30,7 @@ let serve ~config ~timeout (dir : string) addr port j : _ result =
   in
 
   D.add_dir_path ~config ~dir ~prefix:"" server;
+  S.add_middleware ~stage:(`Stage 10) server content_type_middleware;
   S.run ~after_init server
 
 let parse_size s : int =
