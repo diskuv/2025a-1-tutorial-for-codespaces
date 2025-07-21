@@ -424,6 +424,23 @@
                 "panel": "shared",
                 "showReuseMessage": false
             }
+        },
+        {
+            "label": "Turn to 3000",
+            "detail": "Do your own app",
+            "type": "process",
+            "command": "jj",
+            "args": [
+                "new",
+                "-r",
+                "descendants(main) & subject(regex:\"^3000:\")"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false
+            }
         }
     ]
 }
